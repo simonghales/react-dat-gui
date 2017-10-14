@@ -23,12 +23,18 @@ export default class DatBoolean extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.value !== this.state.value) {
+      this.update();
+    }
+  }
+
   getValue(props = this.props) {
     return result(props.data, props.path);
   }
 
   handleChange = event => {
-    this.setState({ value: event.target.checked }, this.update);
+    this.setState({ value: event.target.checked });
   }
 
   update() {

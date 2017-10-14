@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import clamp from 'lodash.clamp';
 import { toNumber } from './utils';
 
@@ -49,9 +48,13 @@ export default class Slider extends Component {
     event.preventDefault();
   }
 
+  handleRef = ref => {
+    this.ref = ref;
+  }
+
   update(pageX, isLive = true) {
     const { min, max, onUpdate } = this.props;
-    const rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+    const rect = this.ref.getBoundingClientRect();
     const x = pageX - rect.left;
     const w = rect.right - rect.left;
     const value = min + clamp(x / w, 0, 1) * (max - min);
@@ -71,6 +74,7 @@ export default class Slider extends Component {
 
     return (
       <span
+        ref={this.handleRef}
         className="slider"
         style={style}
         onClick={this.handleClick}

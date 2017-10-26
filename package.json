@@ -48,9 +48,9 @@
     "lodash.result": "^4.4.0",
     "lodash.set": "^4.2.0",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
+    "react": "~15.5.3",
     "react-color": "^2.13.8",
-    "react-dom": "^16.0.0"
+    "react-dom": "~15.5.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
